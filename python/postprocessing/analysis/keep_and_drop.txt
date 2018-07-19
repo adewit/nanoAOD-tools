@@ -1,0 +1,7 @@
+# this is a comment
+keep * # start with all
+drop HLT_* 
+drop *_cleanmask
+drop FatJet_*
+drop Flag_*
+drop Photon_*
