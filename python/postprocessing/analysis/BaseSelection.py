@@ -15,7 +15,8 @@ class BaseSelection(Module):
         pass
     def beginFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
         self.out = wrappedOutputTree
-        self.out.branch("my_fun_var","F");
+        self.out.branch("some_var","F");
+        self.out.branch("mass_sum","F");
     def endFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
         pass
     def analyze(self, event):
@@ -24,17 +25,24 @@ class BaseSelection(Module):
         taus = Collection(event, "Tau")
         jets = list(Collection(event,"Jet"))
 
-
+        #applly some selection:
         selElectrons = [x for x in electrons if x.mvaSpring16GP_WP80 and x.pt >30 and x.pfRelIso03_all < 0.15]
         selTaus = [x for x in taus if x.pt >30]
+        
+       
+        if len(selElectrons) < 1 or len(selTaus) < 1: #Require at least one electron and one hadronic tau
+            return False 
 
-        my_fun_var=0.
+        some_var=0.
+        pairSum = ROOT.TLorentzVector()
         for e in selElectrons:
            for t in selTaus:
                if e.charge != t.charge:
-                   my_fun_var+=(e.pt+t.pt)
+                   pairSum +=(e.p4()+t.p4())
+                   some_var+=(e.pt+t.pt)
 
-        self.out.fillBranch("my_fun_var",my_fun_var)
+        self.out.fillBranch("some_var",some_var)
+        self.out.fillBranch("mass_sum",pairSum.M())
 
 
         return True
