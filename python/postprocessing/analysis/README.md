@@ -14,6 +14,7 @@ Setting up a new release area:
 
 
 When you log in again, the release area will still be there but you have to repeat these steps:
+
     source /cvmfs/cms.cern.ch/cmsset_default.sh (unless you put this in your .bashrc to be executed by default when you log in)
     cd /nfs/dust/cms/user/<youraccount>/CMSSW_10_4_0/src/
     cmsenv
