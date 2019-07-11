@@ -1,0 +1,14 @@
+You can use the file /afs/desy.de/user/d/dewita/public/output_ZH125_ZLL_powheg_1.root to exercise. It is a Z(ll)H(bb) sample which has been processed by a slightly different framework than you will be using. However, this is enough for learning about trees.
+
+1) Open up the file in ROOT on the command line. You can inspect the contents with `.ls`. The tree `Event` contains information about the stored events, with different variables stored in different branches. You can see which branches the tree contains by calling `Event->Print()`. This will probably roll off your screen, because the tree contains a very large number of branches. If you know part of the name of a branch, but not the full name, you can use wildcards in the Print statement. For example `Event->Print("*on_*")`, if you 
+are interested in branches related to electrons and muons. You can try a few different strings to see what happens. Another way to inspect the contents of the tree is via a TBrowser. You can call `TBrowser b` after opening the file to inspect the contents in a browser. However, this can be slow.
+
+2) Now we know what kind of branches we have in the event, we may want to look through some of the contents. This can be done with `Scan`, e.g. `Events->Scan("Electron_pt")` to find out about the transverse momentum of electrons in the different events. What do the `row` and `instance` numbers mean? If you want to know more kinematic information, you can also add other variables to the command like this `Events->Scan("Electron_pt:Electron_eta")`. You can also make selections, like this: `Events->Scan("Electron_pt:Electron_eta","Electron_pt>30") to only see information about electrons with transverse momentum above 30 GeV.
+
+3) Instead of scanning, you can also draw the contents of a branch, like this `Events->Draw("Electron_pt")`. Or, if you want to know only about electrons with absolute pseudorapidity less than 1 `Events->Draw("Electron_pt","abs(Electron_eta)<1")
+
+4) Now you know a little bit about how to inspect the contents of trees, we will try to make some plots. An example script `scripts/examplePlot.py` is provided. Have a look through the script and see if you can understand the features. Try running the script (`python scripts/examplePlot.py`)
+Once you are comfortable with it, can you try to make the electron pt plot only for electrons with absolute pseudorapidity less than 1? How about for electrons with absolute pseudorapidity less than 1 or greater than 2.5. How about for electrons with absolute pseudorapidity less than 1 and pt less than 30 GeV or greater than 40 GeV? Hint: boolean operations can be executed in ROOT with `&&` (and), `||` (or). 
+
+5) Finally we will have a look at making ratio plots. Similarly to step 4) an example script exists in `scripts/exampleRatioPlot.py`. Again, try running the script and looking through the code to understand the features. What is different from the script used in the previous step?
+

@@ -24,3 +24,6 @@ When you make changes to the code it's a good idea to push them to the repositor
 
 For learning how to use git, this is a good starting point: https://www.codecademy.com/learn/learn-git
 
+
+More samples are available here: /pnfs/desy.de/cms/tier2/store/user/adewit/SummerProjectSamples/ (for later parts of the project)
+
