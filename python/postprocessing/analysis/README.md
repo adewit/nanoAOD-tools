@@ -27,3 +27,14 @@ For learning how to use git, this is a good starting point: https://www.codecade
 
 More samples are available here: /pnfs/desy.de/cms/tier2/store/user/adewit/SummerProjectSamples/ (for later parts of the project)
 
+
+Cross sections for QCD MC (in pb):
+
+    HT100To200:1.127e+06 
+    HT200To300:8.073e+04
+    HT300To500:1.668e+04
+    HT500To700:1.485e+03
+    HT700To1000:2.976e+02
+    HT1000To1500:4.640e+01
+    HT1500To2000:3.720e+00
+    HT2000ToInf:6.438e-01
